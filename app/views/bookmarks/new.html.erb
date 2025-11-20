@@ -1,0 +1,12 @@
+<div class="container">
+  <h1>Add a movie to <%= @list.name %></h1>
+  
+  <%= simple_form_for [@list, @bookmark] do |f| %>
+    <%# simple_form détecte l'association et crée un menu déroulant pour les films %>
+    <%= f.association :movie %> 
+    <%= f.input :comment, placeholder: "Ce film est génial parce que..." %>
+    <%= f.submit "Add movie", class: "btn btn-primary" %>
+  <% end %>
+  
+  <%= link_to "Cancel", list_path(@list) %>
+</div>
