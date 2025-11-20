@@ -1,12 +1,25 @@
-// Graphical variables
+// ===========================================
+// 1. CONFIGURATION
+// ===========================================
 @import "config/fonts";
-@import "config/colors";
-@import "config/bootstrap_variables";
 
-// External libraries
+// On définit juste nos couleurs Apple. 
+// Pas besoin de $gray ou $green car on ne charge plus bootstrap_variables.
+@import "config/colors"; 
+
+// ===========================================
+// 2. LIBRAIRIES EXTERNES
+// ===========================================
 @import "bootstrap";
 @import "font-awesome";
 
-// Your CSS partials
-@import "components/index";
-@import "pages/index";
+// ===========================================
+// 3. NOS COMPOSANTS (Import manuel et sûr)
+// ===========================================
+// On n'utilise pas @import "components/index"; car il est suspect.
+@import "components/navbar";
+@import "components/banner";
+@import "components/card";
+
+// Si tu as créé un fichier spécifique pour les pages, importe-le ici, sinon laisse commenté
+// @import "pages/home"; 

@@ -1,0 +1,65 @@
+// Carte de catégorie (Page d'accueil)
+.card-category {
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 28px;
+  font-weight: 700;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.5); // Lisibilité
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+
+  // Overlay sombre pour que le texte ressorte toujours
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.4));
+  }
+
+  // Le texte doit passer au dessus de l'overlay
+  span {
+    position: relative;
+    z-index: 10;
+  }
+
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+    color: white;
+  }
+}
+
+// Carte de Film (Page Show)
+.movie-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden; // Pour que l'image respecte l'arrondi
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: 0.3s ease;
+  height: 100%; // S'assure que toutes les cartes ont la même hauteur
+  border: none; // Enlève la bordure moche par défaut
+
+  &:hover {
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+  }
+
+  .movie-img {
+    height: 300px;
+    width: 100%;
+    object-fit: cover; // Coupe l'image proprement sans la déformer
+  }
+
+  .movie-info {
+    padding: 20px;
+  }
+}

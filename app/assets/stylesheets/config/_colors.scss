@@ -1,10 +1,18 @@
-// Define variables for your color scheme
+// Définition de notre charte Apple
+$apple-bg:    #F5F5F7;
+$apple-text:  #1D1D1F;
+$apple-blue:  #0071e3;
 
-// For example:
-$red: #FD1015;
-$blue: #0D6EFD;
-$yellow: #FFC65A;
-$orange: #E67E22;
-$green: #1EDD88;
-$gray: #0E0000;
-$light-gray: #F4F4F4;
+// Application directe au Body
+// (On le fait ici pour être sûr que ça s'applique partout)
+body {
+  background-color: $apple-bg !important; // Le !important force la main à Bootstrap
+  color: $apple-text !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: $apple-blue;
+  text-decoration: none;
+  &:hover { color: darken($apple-blue, 15%); }
+}

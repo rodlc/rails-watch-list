@@ -1,19 +1,56 @@
-<h1><%= @list.name %></h1>
-<%= link_to "Add a movie", new_list_bookmark_path(@list), class: "btn btn-primary" %>
+<% 
+  # Image dynamique pour la show
+  if @list.movies.any?
+    bg_image = "url('#{@list.movies.first.poster_url}')"
+  else
+    bg_image = "linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)"
+  end
+%>
 
-<ul>
-  <% @list.bookmarks.each do |bookmark| %>
-    <li>
-      <strong><%= bookmark.movie.title %></strong> - <%= bookmark.comment %>
-      <small>(Rating: <%= bookmark.movie.rating %>)</small>
-      
-      <%# Lien de suppression %>
-      <%= link_to "Delete", 
-          bookmark_path(bookmark), 
-          data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } 
-      %>
-    </li>
-  <% end %>
-</ul>
+<div class="banner" style="background-image: <%= bg_image %>;">
+  <div class="container">
+    <h1><%= @list.name %></h1>
+    <span class="badge bg-white text-dark rounded-pill px-3 py-2 mt-2">
+      <%= @list.movies.count %> movies
+    </span>
+  </div>
+</div>
 
-<%= link_to "Back to lists", lists_path %>
+<div class="container py-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h3 class="fw-bold">Movies</h3>
+    <%= link_to "Add a movie", new_list_bookmark_path(@list), class: "btn btn-primary rounded-pill px-4" %>
+  </div>
+
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <% @list.bookmarks.each do |bookmark| %>
+      <div class="col">
+        <div class="movie-card">
+          <img src="<%= bookmark.movie.poster_url %>" class="movie-img" alt="<%= bookmark.movie.title %>">
+          <div class="movie-info">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <h5 class="fw-bold mb-0 text-truncate"><%= bookmark.movie.title %></h5>
+              <span class="text-warning">⭐️ <%= bookmark.movie.rating %></span>
+            </div>
+            
+            <p class="text-muted small mb-3" style="height: 40px; overflow: hidden;">
+              <%= bookmark.comment %>
+            </p>
+            
+            <div class="d-flex justify-content-end">
+              <%= link_to bookmark_path(bookmark), 
+                  data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, 
+                  class: "text-danger text-decoration-none small fw-bold" do %>
+                 🗑️ Remove
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="mt-5 border-top pt-4">
+    <%= link_to "← Back to lists", lists_path, class: "text-muted text-decoration-none" %>
+  </div>
+</div>

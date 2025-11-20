@@ -1,5 +1,26 @@
-<h1>New List</h1>
-<%= simple_form_for(@list) do |f| %>
-  <%= f.input :name %>
-  <%= f.submit %>
-<% end %>
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-6">
+      <div class="bg-white p-5 rounded-4 shadow-sm">
+        <h2 class="fw-bold mb-4">Create a new list</h2>
+        
+        <%= simple_form_for(@list) do |f| %>
+          <div class="form-inputs">
+            <%= f.input :name, 
+                label: false, 
+                placeholder: "e.g. Superhero movies",
+                input_html: { class: "form-control-lg rounded-3 bg-light border-0" } %>
+          </div>
+
+          <div class="form-actions mt-4 d-grid">
+            <%= f.submit "Create List", class: "btn btn-primary btn-lg rounded-pill" %>
+          </div>
+        <% end %>
+        
+        <div class="text-center mt-3">
+          <%= link_to "Cancel", lists_path, class: "text-muted text-decoration-none" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -11,6 +11,21 @@
   </head>
 
   <body>
+    <!-- Navbar Intégrée -->
+    <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+      <div class="container">
+        <%= link_to root_path, class: "navbar-brand" do %>
+          🍿 WatchList
+        <% end %>
+
+        <div class="d-flex gap-3">
+          <%= link_to "My Lists", lists_path, class: "btn btn-link text-decoration-none text-dark fw-bold" %>
+          <%= link_to "New List", new_list_path, class: "btn btn-dark rounded-pill px-4" %>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contenu des pages -->
     <%= yield %>
   </body>
 </html>
