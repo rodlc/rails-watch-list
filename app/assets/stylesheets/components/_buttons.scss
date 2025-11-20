@@ -1,0 +1,73 @@
+// Variable pour garantir la consistance
+$btn-padding: 12px 24px;
+$btn-radius: 100px; // Pill shape parfait
+
+// 1. Bouton Noir (Navbar)
+.btn-apple-black {
+  background-color: #1D1D1F !important;
+  color: white !important;
+  border-radius: $btn-radius !important;
+  border: 1px solid rgba(0,0,0,0.1) !important;
+  padding: 14px 24px !important; // +2px pour compenser l'effet sombre
+  font-weight: 600 !important;
+  font-size: 15px !important;       // Légèrement plus gros
+  border: none !important;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+  display: inline-flex !important;  // Pour bien aligner l'icône et le texte
+  align-items: center !important;
+  gap: 8px !important;              // Espace entre le + et le texte
+  min-width: 140px !important;      // Largeur minimum garantie !
+  justify-content: center !important;
+  text-decoration: none !important;
+  
+  &:hover {
+    background-color: #3a3a3c !important;
+    transform: scale(1.02) !important;
+    color: white !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+  }
+}
+
+// 2. Bouton Gris (Page Show)
+.btn-apple-gray {
+  background-color: #E5E5EA !important;
+  color: #1D1D1F !important;
+  border-radius: $btn-radius !important;
+  padding: $btn-padding !important; // Même padding
+  font-weight: 600 !important;
+  font-size: 15px !important;
+  border: none !important;
+  transition: all 0.2s ease !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  min-width: 140px !important;      // Même largeur minimum
+  justify-content: center !important;
+  text-decoration: none !important;
+
+  &:hover {
+    background-color: #d1d1d6 !important;
+    color: #000 !important;
+    transform: translateY(-1px) !important;
+  }
+}
+
+// Autres boutons (Ghost, Delete...)
+.btn-ghost {
+  color: #1D1D1F;
+  background: transparent;
+  padding: 10px 16px;
+  font-weight: 500;
+  font-size: 14px;
+  
+  &:hover { background-color: rgba(0,0,0,0.05); }
+}
+
+.btn-text-danger {
+  color: #86868b;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 6px 12px;
+  
+  &:hover { color: #ff3b30; background-color: #fff0f0; border-radius: 6px;}
+}

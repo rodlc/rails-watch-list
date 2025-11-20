@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RailsWatchList</title>
+    <title>MyMDB</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,21 +11,23 @@
   </head>
 
   <body>
-    <!-- Navbar Intégrée -->
-    <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+    <nav class="navbar navbar-expand-sm navbar-lewagon">
       <div class="container">
-        <%= link_to root_path, class: "navbar-brand" do %>
-          🍿 WatchList
+        <%= link_to root_path, class: "navbar-brand d-flex align-items-center gap-2 text-decoration-none" do %>
+          <span style="font-size: 28px; line-height: 1;">🎬</span>
+          <span class="fw-bold" style="color: #1D1D1F; font-size: 20px;">MyMDB</span>
         <% end %>
 
-        <div class="d-flex gap-3">
-          <%= link_to "My Lists", lists_path, class: "btn btn-link text-decoration-none text-dark fw-bold" %>
-          <%= link_to "New List", new_list_path, class: "btn btn-dark rounded-pill px-4" %>
+        <div class="d-flex align-items-center">
+          <%= link_to new_list_path, class: "btn-apple-black" do %>
+            <span style="font-size: 18px; font-weight: 400; line-height: 0;">+</span> 
+            <span>New list</span>
+        <% end %>
         </div>
       </div>
-    </div>
+    </nav>
 
-    <!-- Contenu des pages -->
+    <!-- PLUS DE PADDING ICI. La bannière va toucher le haut de l'écran. -->
     <%= yield %>
   </body>
 </html>

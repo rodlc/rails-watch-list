@@ -1,12 +1,46 @@
-<div class="container">
-  <h1>Add a movie to <%= @list.name %></h1>
-  
-  <%= simple_form_for [@list, @bookmark] do |f| %>
-    <%# simple_form détecte l'association et crée un menu déroulant pour les films %>
-    <%= f.association :movie %> 
-    <%= f.input :comment, placeholder: "Ce film est génial parce que..." %>
-    <%= f.submit "Add movie", class: "btn btn-primary" %>
-  <% end %>
-  
-  <%= link_to "Cancel", list_path(@list) %>
+<div class="container py-5 mt-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-6 col-lg-5">
+      
+      <div class="bg-white p-5 rounded-4 shadow-sm">
+        <div class="text-center mb-4">
+          <h2 class="fw-bold">🔖 Add a movie</h2>
+          <p class="text-muted">to your list <strong><%= @list.name %></strong></p>
+        </div>
+
+        <%= simple_form_for [@list, @bookmark] do |f| %>
+          <div class="form-inputs">
+            <!-- Input Select (Film) -->
+            <div class="mb-3">
+              <%= f.association :movie, 
+                  label: "Select a movie",
+                  collection: Movie.order(:title), 
+                  prompt: "Choose a movie...",
+                  input_html: { class: "form-select form-select-lg rounded-4 bg-light border-0 fs-6" } 
+              %>
+            </div>
+            
+            <!-- Input Commentaire -->
+            <div class="mb-3">
+              <%= f.input :comment, 
+                  label: "Your review",
+                  placeholder: "Best scene was when...",
+                  input_html: { class: "form-control rounded-4 bg-light border-0 p-3", rows: 3 } 
+              %>
+            </div>
+          </div>
+
+          <div class="form-actions mt-4">
+            <!-- Bouton Bleu Apple large -->
+            <%= f.button :submit, "Save movie", class: "btn btn-apple-black w-100 py-3 rounded-pill" %>
+          </div>
+        <% end %>
+
+        <div class="text-center mt-4">
+          <%= link_to "Cancel", list_path(@list), class: "text-muted text-decoration-none small" %>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </div>

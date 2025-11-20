@@ -1,18 +1,32 @@
-// Définition de notre charte Apple
-$apple-bg:    #F5F5F7;
-$apple-text:  #1D1D1F;
-$apple-blue:  #0071e3;
+// Définition des Couleurs
+$gray:       #86868b;
+$light-gray: #F5F5F7;
+$blue:       #0071e3;
+$white:      #ffffff;
 
-// Application directe au Body
-// (On le fait ici pour être sûr que ça s'applique partout)
+$body-bg:    $light-gray;
+$body-color: #1D1D1F;
+$primary:    $blue;
+
+// Application globale
 body {
-  background-color: $apple-bg !important; // Le !important force la main à Bootstrap
-  color: $apple-text !important;
+  background-color: $body-bg !important;
+  color: $body-color !important;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5 {
+  color: $body-color;
+  letter-spacing: -0.02em;
 }
 
 a {
-  color: $apple-blue;
+  color: $primary;
   text-decoration: none;
-  &:hover { color: darken($apple-blue, 15%); }
+  transition: color 0.2s ease;
+  
+  &:hover {
+    color: darken($primary, 10%);
+  }
 }

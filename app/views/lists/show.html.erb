@@ -1,47 +1,52 @@
 <% 
-  # Image dynamique pour la show
   if @list.movies.any?
     bg_image = "url('#{@list.movies.first.poster_url}')"
   else
-    bg_image = "linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)"
+    bg_image = "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
   end
 %>
 
 <div class="banner" style="background-image: <%= bg_image %>;">
   <div class="container">
     <h1><%= @list.name %></h1>
-    <span class="badge bg-white text-dark rounded-pill px-3 py-2 mt-2">
+    <span class="badge bg-white text-dark rounded-pill px-3 py-2 mt-2 fw-bold">
       <%= @list.movies.count %> movies
     </span>
   </div>
 </div>
 
-<div class="container py-4">
-  <div class="d-flex justify-content-between align-items-center mb-4">
-    <h3 class="fw-bold">Movies</h3>
-    <%= link_to "Add a movie", new_list_bookmark_path(@list), class: "btn btn-primary rounded-pill px-4" %>
+<div class="container py-5">
+  <div class="d-flex justify-content-between align-items-center mb-5">
+    <h3 class="fw-bold m-0">📼 Movies</h3>
+    
+    <!-- BOUTON CHANGÉ ICI : btn-apple-gray -->
+    <%= link_to new_list_bookmark_path(@list), class: "btn-apple-gray" do %>
+      <span style="font-size: 18px; font-weight: 400; line-height: 0;">+</span> 
+      <span>Add movie</span>
+    <% end %>
   </div>
 
-  <div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
     <% @list.bookmarks.each do |bookmark| %>
       <div class="col">
         <div class="movie-card">
           <img src="<%= bookmark.movie.poster_url %>" class="movie-img" alt="<%= bookmark.movie.title %>">
           <div class="movie-info">
             <div class="d-flex justify-content-between align-items-start mb-2">
-              <h5 class="fw-bold mb-0 text-truncate"><%= bookmark.movie.title %></h5>
-              <span class="text-warning">⭐️ <%= bookmark.movie.rating %></span>
+              <h5 class="fw-bold mb-0" style="max-width: 70%;"><%= bookmark.movie.title %></h5>
+              <div class="d-flex align-items-center gap-1">
+                <span style="font-size: 14px;">⭐️</span> 
+                <span class="fw-bold" style="font-size: 15px;"><%= bookmark.movie.rating.round(1) %></span>
+              </div>
             </div>
-            
-            <p class="text-muted small mb-3" style="height: 40px; overflow: hidden;">
+            <p class="text-muted small mb-3" style="height: 45px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
               <%= bookmark.comment %>
             </p>
-            
-            <div class="d-flex justify-content-end">
+            <div class="pt-3 border-top">
               <%= link_to bookmark_path(bookmark), 
-                  data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, 
-                  class: "text-danger text-decoration-none small fw-bold" do %>
-                 🗑️ Remove
+                  data: { turbo_method: :delete, turbo_confirm: "Remove?" }, 
+                  class: "btn-text-danger text-decoration-none d-inline-flex align-items-center gap-2" do %>
+                <span>🗑️ Remove</span>
               <% end %>
             </div>
           </div>
@@ -50,7 +55,9 @@
     <% end %>
   </div>
 
-  <div class="mt-5 border-top pt-4">
-    <%= link_to "← Back to lists", lists_path, class: "text-muted text-decoration-none" %>
+  <div class="mt-5 pt-4 text-center">
+     <%= link_to root_path, class: "btn-ghost text-decoration-none text-muted" do %>
+       ← Back to lists
+     <% end %>
   </div>
 </div>

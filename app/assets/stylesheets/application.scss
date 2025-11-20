@@ -1,25 +1,13 @@
-// ===========================================
-// 1. CONFIGURATION
-// ===========================================
+// 1. Configuration
 @import "config/fonts";
+@import "config/colors";
 
-// On définit juste nos couleurs Apple. 
-// Pas besoin de $gray ou $green car on ne charge plus bootstrap_variables.
-@import "config/colors"; 
-
-// ===========================================
-// 2. LIBRAIRIES EXTERNES
-// ===========================================
+// 2. Librairies Externes
 @import "bootstrap";
 @import "font-awesome";
 
-// ===========================================
-// 3. NOS COMPOSANTS (Import manuel et sûr)
-// ===========================================
-// On n'utilise pas @import "components/index"; car il est suspect.
+// 3. Composants
 @import "components/navbar";
 @import "components/banner";
 @import "components/card";
-
-// Si tu as créé un fichier spécifique pour les pages, importe-le ici, sinon laisse commenté
-// @import "pages/home"; 
+@import "components/buttons";
