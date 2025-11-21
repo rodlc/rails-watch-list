@@ -2,24 +2,55 @@
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 999;
-  
-  // CORRECTION : Plus transparent (0.6) pour l'effet Waouh
-  background-color: rgba(255, 255, 255, 0.6); 
-  
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255,255,255,0.1); // Bordure plus subtile
-  padding: 10px 0;
-  transition: all 0.3s ease;
+  z-index
 
+: 999;
+  background-color: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 10px 0;
+  transition: all 0.4s ease;
+
+  // 1. LE LOGO (Blanc par défaut)
   .navbar-brand {
-    font-weight: 700;
-    color: #1D1D1F;
-    font-size: 20px;
-    letter-spacing: -0.5px;
-    transition: opacity 0.2s ease;
+    color: white !important; // Force le blanc sur la bannière
+    transition: color 0.3s ease;
     
-    &:hover { opacity: 0.7; }
+    &:hover { opacity: 0.8; }
+  }
+
+  // 2. LE BOUTON (Semi-transparent par défaut)
+  .btn-apple-black {
+    background-color: rgba(255, 255, 255, 0.2) !important; // Gris transparent
+    color: white !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    backdrop-filter: blur(10px);
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.3) !important;
+      transform: scale(1.02);
+    }
+  }
+}
+
+// === ETAT SCROLLÉ (Fond Blanc) ===
+.navbar-lewagon.scrolled {
+  background-color: white !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+
+  // Logo devient Noir
+  .navbar-brand {
+    color: #1D1D1F !important;
+  }
+
+  // Bouton devient Noir
+  .btn-apple-black {
+    background-color: #1D1D1F !important; // Noir Apple
+    color: white !important;
+    border: none !important;
+
+    &:hover {
+      background-color: #3a3a3c !important;
+    }
   }
 }
